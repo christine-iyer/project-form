@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Cloudinary } from "@cloudinary/url-gen";
-import { image } from '@cloudinary/url-gen/qualifiers/source';
+
+
 class CloudinaryUploadWidget extends Component {
   componentDidMount() {
     const cloudName = "dqjhgnivi"; // replace with your own cloud name
@@ -17,7 +17,7 @@ class CloudinaryUploadWidget extends Component {
       {
         cloudName: cloudName,
         uploadPreset: uploadPreset,
-        cropping: true//,//add a cropping step
+        cropping: true//add a cropping step
         // showAdvancedOptions: true,  //add advanced options (public_id and tag)
         // sources: [ "local", "url"], // restrict the upload sources to URL and local files
         // multiple: false,  //restrict upload to a single file
@@ -51,9 +51,22 @@ class CloudinaryUploadWidget extends Component {
 
   render() {
     return (
-      <button id="upload_widget" className="cloudinary-button">
-        Upload
-      </button>
+      // <button id="upload_widget" className="cloudinary-button">
+      //   Upload
+      // </button>  
+      <>
+      <button 
+      id="upload_widget" 
+      className="cloudinary-button">
+        Upload files
+    </button>
+  
+    <img  
+    id="uploadedimage" 
+    src="">
+  </img> 
+  </>
+    
 
 
     );

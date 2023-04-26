@@ -5,12 +5,14 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import styles from './CreateBookmark.module.scss'
 
+
 export default function CreateBookmark(props) {
     //State to hold the form data
     const [form, setForm] = useState({
         name: "",
         age: 0,
-        check: false
+        check: false,
+        category: ''
     })
 
     const handleChange = event => {
@@ -51,24 +53,44 @@ export default function CreateBookmark(props) {
                             placeholder='Age'
                         />
                     </Form.Group>
-                </Col>   
+                </Col>
+                <Col>
+                    <Form.Group className="mb-3">
+                    <Form.Label>Checkbox</Form.Label>
+                        <Form.Check
+                            type='checkbox'
+                            value={form.check === false}
+                            style={{ float: 'left', marginTop: '0px' }}
+                            //checked={(form.checked && form.checked === true)}
+                            onChange={(evt) => setForm({ ...form, check: evt.target.checked })}
+                        />
+                    </Form.Group>
+                </Col>
+                <Col>
+                    <Form.Group as={Col} controlId="formGridState">
+                        <Form.Label>Pick a Category</Form.Label>
+                        <Form.Select defaultValue="Misc"
+                            options={form.category}
+
+                            onChange={handleChange}
+                            placeholder='Category'
+                            name="category" >
+                            <option value="Family">Family</option>
+                            <option value="Friends">Friends</option>
+                            <option value="Work">Work</option>
+                            <option value="Code">Code</option>
+                            <option value="Misc">Misc</option>
+                        </Form.Select>
+                    </Form.Group>
+                </Col>
 
                 <Col>
-                <Form.Group className="mb-3">
-        <Form.Check
-          type='checkbox'
-          value={form.check === false}
-          style={{float:'left',marginTop:'0px'}}
-          //checked={(form.checked && form.checked === true)}
-          onChange={(evt) => setForm({...form, check: evt.target.checked })}
-          
-         
-        />
-      </Form.Group>
 
-                </Col> 
                 
-                  </Row>
+                </Col>
+
+
+            </Row>
             <Col>
                 <Button
                     variant="danger"

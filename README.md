@@ -161,9 +161,111 @@ export default function CreateBookmark(props) {
 
 ## More Input Types
 
+### Checkbox
+
+This is a work-in-progress. The data input is being captured correctly as a boolean, however conditional labeling and resetting to an unckecked value are still pending functionalities.
+
+### Categories
+
+<table>
+<tr>
+<th> React </th>
+<th> React-Bootstrap </th>
+</tr>
+<tr>
+<td>
+
+```js
+   <label>Pick a category:
+            <select 
+            
+            options={blog.category} 
+            value={blog.category} 
+            onChange={handleChange} 
+            placeholder='Category'
+            name="category">
+              <option value="Family">Family</option>
+              <option  value="Friends">Friends</option>
+              <option  value="Work">Work</option>
+              <option  value="Code">Code</option>
+              <option  value="Misc">Misc</option>
+            </select>
+            </label>
+```
+
+</td>
+<td>
+
+```js
+ <Form.Group as={Col} controlId="formGridState">
+      <Form.Label>Pick a Category</Form.Label>
+      <Form.Control 
+      
+      
+      />
+      <Form.Select defaultValue="Misc" 
+                    options={blog.category} 
+            value={blog.category} 
+            onChange={handleChange} 
+            placeholder='Category'
+            name="category" >
+      
+              <option value="Family">Family</option>
+              <option  value="Friends">Friends</option>
+              <option  value="Work">Work</option>
+              <option  value="Code">Code</option>
+              <option  value="Misc">Misc</option>
+      </Form.Select>
+    </Form.Group>
+
+```
+
+</td>
+</tr>
+</table>
 
 
-# Upload photos to bring your ideas to life
+
+# Upload photos 
+
+<details>
+  <summary> 🪲 🪲 Wasn't showing the image</summary>
+ Make sure it's labeled correctly. 
+
+  **Example**
+  ```js
+ (error, result) => {
+        if (!error && result && result.event === "success") {
+          console.log("Done! Here is the image info: ", result.info);
+          document
+            .getElementById("uploadedimage")
+            .setAttribute("src", result.info.secure_url); //this is required for displaying the image
+             }
+      }
+  ```
+</details>
+
+<details>
+  <summary> 🪲 🪲   setAttribute not recognized </summary>
+ Make sure it's labeled correctly. 
+
+  **Error**
+  setAttribute not recognized. 
+  **Solution**
+  install packages
+  ```js
+"@cloudinary/react": "^1.11.2",
+        "@cloudinary/url-gen": "^1.10.0",
+        "@testing-library/jest-dom": "^5.16.5",
+        "cloudinary": "^1.36.2",
+        "cloudinary-core": "^2.13.0",
+        "cloudinary-react": "^1.8.1",
+```
+
+</details>
+
+
+
 
 This is, frankly, hard for me. I don't know why. But I suppose I'd rather have an essential part be hard than an ancillary one. 
 
