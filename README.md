@@ -266,6 +266,32 @@ This is a work-in-progress. The data input is being captured correctly as a bool
 
 
 
+<details>
+  <summary> 🪲 🪲   How to set up a server for an existing React App  </summary>
+
+[Make sure it's labeled correctly. ](https://www.section.io/engineering-education/how-to-setup-nodejs-express-for-react/)
+
+
+  ```js
+touch server.js
+npm init -y
+npm install express --save
+const express = require('express'); //Line 1
+const app = express(); //Line 2
+const port = process.env.PORT || 5000; //Line 3
+
+// This displays message that the server running and listening to specified port
+app.listen(port, () => console.log(`Listening on port ${port}`)); //Line 6
+
+// create a GET route
+app.get('/express_backend', (req, res) => { //Line 9
+  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
+}); //Line 1
+```
+
+</details>
+
+
 
 This is, frankly, hard for me. I don't know why. But I suppose I'd rather have an essential part be hard than an ancillary one. 
 
