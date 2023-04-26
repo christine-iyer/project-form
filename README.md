@@ -76,7 +76,7 @@ Make sure it's labeled correctly.
 Why was this hard??? Beats me. All I needed to do was add a command after the last step in the handle submit function, replacing the state with the original state. ```setForm('')```
 
   **Example**
-  
+
   ```js
   const handleSubmit = event => {
     event.preventDefault()
@@ -86,6 +86,80 @@ Why was this hard??? Beats me. All I needed to do was add a command after the la
 ```
 </details>
 
+# 🀟 
+Right now is a great place to stop and reflect on some of the tnhings I've done here. We have a bootstrapped form that records inpout and resets a form. We've used layout pieces, Row and Col. We've not only fixed the button sizing...it needed to be placed inside the form, we've also changed the style to brighten it up (red now, was blue) but been able to keep the submit functionality by tying it. So many of the ntegral bootstrap components are contained within this tiny bit of code. The next step is to broaden the bootstrap components to include categories, and then to print the iutput in cards.
+
+Here's that code:
+
+```js
+import { useState } from "react"
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import styles from './CreateBookmark.module.scss'
+
+export default function CreateBookmark(props) {
+    //State to hold the form data
+    const [form, setForm] = useState({
+        name: "",
+        age: 0,
+    })
+
+    const handleChange = event => {
+        // dynamically update the state using the event object
+        // this function always looks the same
+        setForm({ ...form, [event.target.name]: event.target.value })
+    }
+    const handleSubmit = event => {
+        // prevent page refresh
+        event.preventDefault()
+        // do what you want with the form data
+        console.log(form)
+        setForm('')
+    }
+    return (
+        <Form onSubmit={handleSubmit}>
+            <Row>
+                <Col>
+                    <Form.Group controlId='formBasicTitle'>
+                        <Form.Label>Title</Form.Label>
+                        <Form.Control
+                            onChange={handleChange}
+                            value={form.name || ''}
+                            name='name'
+                            type='text'
+                            placeholder='Name'
+                        />
+                    </Form.Group>
+                </Col>
+                <Col>
+                    <Form.Group controlId='formBasicAge'>
+                        <Form.Label>Title</Form.Label>
+                        <Form.Control
+                            onChange={handleChange}
+                            value={form.age || ''}
+                            name='age'
+                            type='number'
+                            placeholder='Age'
+                        />
+                    </Form.Group>
+                </Col>      </Row>
+            <Col>
+                <Button
+                    variant="danger"
+                    value="Submit Form"
+                    placeholder='Ready?'
+                    type="submit">
+                    Danger</Button>{' '}
+            </Col>
+        </Form>
+    )
+}
+```
+![](./App.png)
+
+## More Input Types
 
 
 
