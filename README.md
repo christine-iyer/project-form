@@ -269,7 +269,7 @@ This is a work-in-progress. The data input is being captured correctly as a bool
 <details>
   <summary> 🪲 🪲   How to set up a server for an existing React App  </summary>
 
-[Make sure it's labeled correctly. ](https://www.section.io/engineering-education/how-to-setup-nodejs-express-for-react/)
+[Order Matters. Touch server.js before initializing server. ](https://www.section.io/engineering-education/how-to-setup-nodejs-express-for-react/)
 
 
   ```js
